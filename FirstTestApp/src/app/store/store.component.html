@@ -1,0 +1,20 @@
+<form>
+  <div class="form-group col-md-6">
+    <h3>Add new products</h3>
+    <label for="product-name">Product name: </label>
+    <input class="form-control" #name id="product-name">
+
+    <label for="product-manufacturer">Product manufacturer: </label>
+    <input class="form-control" #manufacturer id="product-manufacturer">
+
+    <label for="product-price">Product price: </label>
+    <input class="form-control" type="number" #price id="product-price">
+
+    <button class="btn btn-primary" (click)="addProduct(name.value, manufacturer.value, price.value)">Add product
+    </button>
+  </div>
+</form>
+
+<div *ngFor="let product of products">
+<app-product-view [product]="product"></app-product-view>
+</div>

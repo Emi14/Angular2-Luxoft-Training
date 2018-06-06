@@ -1,0 +1,42 @@
+<div>
+  <label>My name is: {{name}}</label>
+  <br>
+  <input type="text" [(ngModel)]="name"/>
+
+  <button (click)="hello()">Click for alert</button>
+
+  <div class="hidden-class" [class.hidden-class]="!flag">
+    <span>
+      I am hidden by CSS.
+    </span>
+  </div>
+
+  <div *ngIf="flag">
+    <span>
+      The button is working fine.
+    </span>
+  </div>
+
+  <div [ngSwitch]="flag" [ngStyle]="{color:'white', 'background-color': 'blue'}">
+    <span *ngSwitchCase="true">Flag is true</span>
+    <span *ngSwitchCase="false">Flag is false</span>
+    <span *ngSwitchDefault>Flag is undefined</span>
+  </div>
+
+  <div [ngClass]="{bordered: false}">This is never bordered</div>
+  <div [ngClass]="{bordered: true}">This is always bordered</div>
+
+  <div [ngClass]="{bordered: isBordered}">
+    Border {{isBordered ? "ON" : "OFF"}}
+  </div>
+
+  <div *ngFor="let city of cities; let num = index">
+    <div>{{num+1}} - {{city}}</div> <span (click)="deleteEntry(num)">X</span>
+  </div>
+
+  <input [value]="currentHero.firstName" (input)="currentHero.firstName=$event.target.value">
+
+  <input #phone placeholder="phone number">
+  <button (click)="callPhone(phone)">Call</button>
+
+</div>

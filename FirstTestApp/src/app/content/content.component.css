@@ -1,0 +1,8 @@
+.hidden-class{
+  display: none;
+}
+
+.bordered {
+  border: 1px dashed black;
+  background-color: aqua;
+}
