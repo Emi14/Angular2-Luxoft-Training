@@ -15,6 +15,18 @@
   </div>
 </form>
 
-<div *ngFor="let product of products">
-<app-product-view [product]="product"></app-product-view>
+
+<div class="col-md-6" *ngIf="products.length > 0">
+  <table class="table table-hover">
+    <thead class="thead-dark">
+    <tr>
+      <th>Name</th>
+      <th>Manufacturer</th>
+      <th>Price</th>
+    </tr>
+    </thead>
+    <tbody *ngFor="let product of products">
+    <app-product-view [product]="product"></app-product-view>
+    </tbody>
+  </table>
 </div>

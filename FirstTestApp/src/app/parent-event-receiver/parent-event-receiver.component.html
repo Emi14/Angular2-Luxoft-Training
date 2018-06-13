@@ -1,0 +1,14 @@
+<div class="container col-md-4">
+  <div class="alert alert-success text-center">Agreed: {{agree}}</div>
+  <br>
+  <div class="alert alert-danger text-center">Disagreed: {{disagree}}</div>
+  <div>
+    <app-child-event-emitter *ngFor="let voter of voters" [voter]="voter" (onVoted)="selectedVote($event)">
+    </app-child-event-emitter>
+  </div>
+</div>
+<div>
+  <app-child-data-bind [(test)]="newTest" ></app-child-data-bind>
+  <br>
+  <span>Parent value: {{newTest}}</span>
+</div>
