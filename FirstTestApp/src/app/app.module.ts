@@ -1,6 +1,6 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 import {AppComponent} from './app.component';
 import {HeaderComponent} from './header/header.component';
@@ -14,6 +14,8 @@ import {ChildDataBindComponent} from './child-data-bind/child-data-bind.componen
 import {CountdownTimerComponent} from './countdown-timer/countdown-timer.component';
 import {CountdownParentComponent} from './countdown-parent/countdown-parent.component';
 import {CountdownParentViewChildComponent} from './countdown-parent-view-child/countdown-parent-view-child.component';
+import {RouterModule} from "@angular/router";
+import {FormValdiationComponent} from './form-valdiation/form-valdiation.component';
 
 @NgModule({
   declarations: [
@@ -27,14 +29,28 @@ import {CountdownParentViewChildComponent} from './countdown-parent-view-child/c
     ChildDataBindComponent,
     CountdownTimerComponent,
     CountdownParentComponent,
-    CountdownParentViewChildComponent
+    CountdownParentViewChildComponent,
+    FormValdiationComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    NgbModule.forRoot()
+    ReactiveFormsModule,
+    NgbModule.forRoot(),
+    RouterModule.forRoot([
+      {path: 'store/:id', component: StoreComponent},
+      {path: 'parent-receiver', component: ParentEventReceiverComponent,
+        children:[
+          {path: '', redirectTo: 'overview', pathMatch: 'full'},
+          {path: 'overview', component: ParentEventReceiverComponent},
+          {path: 'specs', component: ChildDataBindComponent}
+        ]},
+      {path: '', component: ChildDataBindComponent},
+      {path: '**', component: CountdownTimerComponent, data: {title: 'Page not found'}}
+    ])
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

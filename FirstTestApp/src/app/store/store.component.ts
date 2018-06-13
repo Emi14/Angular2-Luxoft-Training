@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Product} from "../model/product";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-store',
@@ -8,13 +9,17 @@ import {Product} from "../model/product";
 })
 export class StoreComponent implements OnInit {
 
+  id : string;
   products: Array<Product>;
 
-  constructor() {
+  constructor(private route: ActivatedRoute) {
     this.products = [];
   }
 
   ngOnInit() {
+    this.route.params.subscribe(params => {
+      this.id = params['id'];
+    })
   }
 
   addProduct(name: string, manufacturer: string, price: number) {

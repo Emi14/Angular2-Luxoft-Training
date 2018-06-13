@@ -1,0 +1,31 @@
+<!--<form #heroForm="ngForm" (ngSubmit)="onSubmit()">-->
+<!--<div class="form-group">-->
+<!--<label for="power">Hero Power</label>-->
+<!--<select #power="ngModel" class="form-control" name="power" [(ngModel)]="hero.power" required>-->
+<!--<option *ngFor="let power of powers" [value]="power">{{power}}</option>-->
+<!--</select>-->
+<!--<div *ngIf="power.errors && power.touched" class="alert alert-danger">-->
+<!--<div [hidden]="!power.errors.required">Power is required</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--<button type="submit" class="btn btn-default" [disabled]="!heroForm.form.valid">Submit</button>-->
+<!--</form>-->
+
+<form novalidate [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input class="form-control" id="name" type="text" formControlName="name">
+  </div>
+  <div class="form-group"><label for="street">Street</label>
+    <input class="form-control" id="street" type="text" formControlName="street">
+  </div>
+  <div class="form-group"><label for="city">City</label>
+    <input class="form-control" id="city" type="text" formControlName="city">
+  </div>
+  <div class="form-group">
+    <label for="zip">Zip</label>
+    <input class="form-control" id="zip" type="text" formControlName="zip">
+  </div>
+
+  <button type="submit" class="btn btn-primary">Validate</button>
+</form>
