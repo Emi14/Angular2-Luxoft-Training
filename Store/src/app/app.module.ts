@@ -10,6 +10,7 @@ import {CheckoutComponent} from './checkout/checkout.component';
 import {ProfileComponent} from './profile/profile.component';
 import {CategoryComponent} from './category/category.component';
 import {ProductComponent} from './product/product.component';
+import {ShopComponent} from './shop/shop.component';
 
 @NgModule({
   declarations: [
@@ -19,21 +20,18 @@ import {ProductComponent} from './product/product.component';
     CheckoutComponent,
     ProfileComponent,
     CategoryComponent,
-    ProductComponent
+    ProductComponent,
+    ShopComponent
   ],
   imports: [
     BrowserModule,
     NgbModule.forRoot(),
     RouterModule.forRoot([
       {path: 'checkout', component: CheckoutComponent},
-      {path: 'profile', component: ProfileComponent},
       {
-        path: 'shop', component: ProfileComponent,
+        path: 'shop', component: ShopComponent,
         children: [
-          {
-            path: ':categoryId', component: CategoryComponent,
-            children: [{path: ':productId', component: ProductComponent}]
-          }
+          {path: ':categoryId', component: CategoryComponent}
         ]
       },
       {path: 'profile', component: ProfileComponent},

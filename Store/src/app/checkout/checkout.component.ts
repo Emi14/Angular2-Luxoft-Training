@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import {ProductComponent} from "../product/product.component";
+import {CartService} from "../service/cart.service";
 
 @Component({
   selector: 'app-checkout',
@@ -7,9 +9,20 @@ import {Component, OnInit} from '@angular/core';
 })
 export class CheckoutComponent implements OnInit {
 
-  constructor() { }
+  products: Array<ProductComponent>;
 
-  ngOnInit() {
+  constructor(private cartService: CartService) {
   }
 
+  ngOnInit() {
+    this.products = this.cartService.products;
+  }
+
+  removeProduct(index: number) {
+    this.cartService.removeProduct(index);
+  }
+
+  getSum():number {
+    return this.cartService.getSum();
+  }
 }

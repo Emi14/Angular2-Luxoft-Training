@@ -1,0 +1,11 @@
+<div class="container">
+  <h2>Select the desired category:</h2>
+  <ul class="list-group">
+    <li class="list-group-item d-flex justify-content-between align-items-center"
+        *ngFor="let category of categories">
+      <a routerLink="{{category.id}}" routerLinkActive="active"> {{category.name}}</a>
+      <span class="badge badge-primary badge-pill">{{category.numberOfMemberProducts}}</span>
+    </li>
+    <router-outlet></router-outlet>
+  </ul>
+</div>

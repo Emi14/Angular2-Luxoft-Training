@@ -1,1 +1,14 @@
-<app-header-navbar></app-header-navbar>
+<div class="container">
+  <h2>Your shopping cart contains the following items:</h2>
+  <ul class="list-group">
+    <li class="list-group-item d-flex justify-content-between align-items-center"
+        *ngFor="let product of products, let num=index">
+      {{product.name}}
+      <span class="badge badge-primary badge-pill">{{product.price}} EURO</span>
+      <button class="btn btn-danger" type="button" (click)="removeProduct(num)">Remove</button>
+    </li>
+  </ul>
+  <div>
+    <h2>Total price: {{getSum()}} EURO</h2>
+  </div>
+</div>

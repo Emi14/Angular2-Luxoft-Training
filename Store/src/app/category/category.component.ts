@@ -1,4 +1,7 @@
 import {Component, OnInit} from '@angular/core';
+import {ProductComponent} from "../product/product.component";
+import {CartService} from "../service/cart.service";
+import {CategoryService} from "../service/category.service";
 
 @Component({
   selector: 'app-category',
@@ -7,9 +10,18 @@ import {Component, OnInit} from '@angular/core';
 })
 export class CategoryComponent implements OnInit {
 
-  constructor() { }
+  id: number;
+  name: string;
+  numberOfMemberProducts: number;
+  products: Array<ProductComponent>;
+
+  constructor(private cartService: CartService, private categoryService: CategoryService) {
+  }
 
   ngOnInit() {
   }
 
+  addProductToCart(product: ProductComponent) {
+    this.cartService.addProduct(product);
+  }
 }
